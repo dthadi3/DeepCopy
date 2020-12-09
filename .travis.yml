@@ -4,6 +4,10 @@ env:
   global:
     - COMPOSER_ROOT_VERSION=1.8.0
 
+arch:
+  - amd64
+  - ppc64le
+
 php:
   - '7.1'
   - '7.2'
@@ -15,6 +19,9 @@ matrix:
   fast_finish: true
   include:
     - php: '7.1'
+      env: COMPOSER_FLAGS="--prefer-lowest"
+    - php: '7.1'
+      arch: ppc64le
       env: COMPOSER_FLAGS="--prefer-lowest"
   allow_failures:
     - php: nightly
